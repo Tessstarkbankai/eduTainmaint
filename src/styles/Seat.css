@@ -1,0 +1,22 @@
+.seat{
+    text-align: center;
+    font-size: 10px;
+    border-radius: 20px;
+    border: 1px solid grey;
+    background-color: white;
+    cursor: pointer;
+}
+
+.seat.occupied{
+    border-radius: 20px;
+    border: 1px solid grey;
+    color: rgb(182, 182, 182);
+    background-color: rgb(182, 182, 182);
+    user-select: none;
+}
+
+.seat.selected{
+    border-radius: 20px;
+    border: 1px solid grey;
+    background-color: red;
+}
