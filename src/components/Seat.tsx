@@ -16,7 +16,7 @@ function Seat({ seatNo, seatState, seatID, onSelect }: SeatProps) {
 
     const handleSelect = (id: String) => {
         if (seatState !== SeatState.occupied) {
-            onSelect(id);
+			onSelect(id);
         }
     }
     
