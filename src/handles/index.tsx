@@ -2,7 +2,7 @@ import { addDoc, collection } from "@firebase/firestore";
 import { firestore } from "../fireabse_setup/firebase";
 
 const handleSubmit = (testdata:any) => {
-	const ref = collection(firestore, "test_data"); // Firebase creates this automatically
+	const ref = collection(firestore, "test_data");
 
 	let data = {
 		testData: testdata,
