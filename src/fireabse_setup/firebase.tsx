@@ -1,5 +1,13 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "@firebase/firestore";
+import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import {
+	query,
+	collection,
+	where,
+	getDocs,
+	addDoc,
+	getFirestore,
+} from "@firebase/firestore";
 
 const firebaseConfig = {
 	apiKey: "AIzaSyBc8AwHCyvNmeRQBPU0aLC7FULXGr5IJTA",
@@ -13,3 +21,39 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 export const firestore = getFirestore(app);
+export const auth = getAuth(app);
+export const googleAuthProvider = new GoogleAuthProvider();
+googleAuthProvider.setCustomParameters({ prompt: "select_account" });
+
+export const signInWithGoogle = async () => {
+	try {
+		const res = await signInWithPopup(auth, googleAuthProvider);
+		const user = res.user;
+		const q = query(
+			collection(firestore, "users"),
+			where("uid", "==", user.uid)
+		);
+		const docs = await getDocs(q);
+		if (docs.docs.length === 0) {
+			await addDoc(collection(firestore, "users"), {
+				uid: user.uid,
+				name: user.displayName,
+				authProvider: "google",
+				email: user.email,
+			});
+		}
+	} catch (err) {
+		console.error(err);
+		alert(err);
+	}
+};
+
+// const signInWithGoogle = async () => {
+// 	const provider = new GoogleAuthProvider(); // Use 'GoogleAuthProvider' directly
+// 	provider.setCustomParameters({ prompt: "select_account" });
+// 	try {
+// 		await signInWithPopup(auth, provider); // Use 'provider' directly here
+// 	} catch (error) {
+// 		alert(error.message);
+// 	}
+// };

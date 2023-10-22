@@ -7,18 +7,25 @@ import {
 	QuerySnapshot,
 	DocumentData,
 } from "@firebase/firestore";
-import { firestore } from "../fireabse_setup/firebase";
+import { auth, firestore } from "../fireabse_setup/firebase";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../fireabse_setup/AuthContext";
 
 const ref = collection(firestore, "events");
 function EventsPage() {
+	const { currentUser } = useAuth();
+	const navigate = useNavigate();
+
 	const [snapshot, setsnapshot] =
 		useState<QuerySnapshot<DocumentData, DocumentData>>();
 
-	const navigate = useNavigate();
-
 	useEffect(() => {
+		if (currentUser == null) {
+			console.log(auth.currentUser + "Null User");
+			navigate("/");
+		}
+
 		getDocs(ref).then((snapshot) => {
 			setsnapshot(snapshot);
 		});
@@ -30,7 +37,7 @@ function EventsPage() {
 			<Card
 				key={doc.id}
 				onClick={() => {
-					navigate(`/book/${doc.id}`);
+					navigate(`/events/${doc.id}`);
 				}}
 				hoverable
 				// style={{ width: 400 }}
