@@ -1,0 +1,21 @@
+.ticket-seat-number {
+	font-size: 90px;
+	font-weight: bold;
+	margin: 0;
+}
+
+.ticket-event-name {
+	font-size: 40px;
+	font-weight: bold;
+	margin: 10px;
+}
+
+.ticket-data {
+	font-size: 26px;
+	margin: 5px 0;
+}
+
+#ticket-wrapper {
+	background-color: white;
+	padding: 20px;
+}

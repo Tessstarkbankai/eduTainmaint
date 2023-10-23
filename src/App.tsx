@@ -6,6 +6,7 @@ import CreateEventPage from "./components/CreateEventPage";
 import HomePage from "./components/HomePage";
 import { AuthProvider } from "./fireabse_setup/AuthContext";
 import SeatBookingPage from "./components/SeatBookingPage";
+import GenerateTicketPage from "./components/GenerateTicketPage";
 
 function App() {
 	return (
@@ -17,6 +18,10 @@ function App() {
 					<Route path="/events/:eventID" element={<BookingPage />} />
 					<Route path="/create-event" element={<CreateEventPage />} />
 					<Route path="/events/:eventID/book/" element={<SeatBookingPage />} />
+					<Route
+						path="/events/:eventID/book/ticket"
+						element={<GenerateTicketPage />}
+					/>
 				</Routes>
 			</BrowserRouter>
 		</AuthProvider>

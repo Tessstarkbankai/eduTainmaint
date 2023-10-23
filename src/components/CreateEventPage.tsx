@@ -4,11 +4,13 @@ import { firestore } from "../fireabse_setup/firebase";
 import { RangePickerProps } from "antd/es/date-picker";
 import { useState } from "react";
 import { allEmptySeats } from "./SeatsMap";
+import { useNavigate } from "react-router-dom";
 const { RangePicker } = DatePicker;
 
 const eventsRef = collection(firestore, "events");
 
 function CreateEventPage() {
+	const navigate = useNavigate();
 	let defaultStartDate = new Date(Date.now());
 	let defaultEndDate = new Date(Date.now() + 7 * 86400000); // 7 days from now
 
@@ -34,7 +36,7 @@ function CreateEventPage() {
 
 	const onFinish = (values: any) => {
 		createEvent(values.title, values.description, values.imageURL);
-		// console.log(values.title);
+		navigate("/");
 	};
 
 	const onFinishFailed = (errorInfo: any) => {
@@ -117,17 +119,3 @@ function CreateEventPage() {
 }
 
 export default CreateEventPage;
-
-// import React from "react";
-
-// type FieldType = {
-// 	username?: string;
-// 	password?: string;
-// 	remember?: string;
-// };
-
-// const App: React.FC = () => (
-
-// );
-
-// export default App;

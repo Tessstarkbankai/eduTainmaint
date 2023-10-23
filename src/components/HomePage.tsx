@@ -3,10 +3,17 @@ import { SearchOutlined, LogoutOutlined } from "@ant-design/icons";
 import { auth, signInWithGoogle } from "../fireabse_setup/firebase";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../fireabse_setup/AuthContext";
+import { useEffect } from "react";
 
 function HomePage() {
 	const navigate = useNavigate();
 	const { currentUser } = useAuth();
+
+	useEffect(() => {
+		if (auth.currentUser !== null) {
+			navigate("/events");
+		}
+	}, []);
 
 	return (
 		<div>
