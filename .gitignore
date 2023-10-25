@@ -5,6 +5,10 @@
 /.pnp
 .pnp.js
 
+/server/node_modules
+/server/mydbkey.json
+/functions/
+
 # testing
 /coverage
 

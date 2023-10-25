@@ -1,17 +1,11 @@
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 import "../styles/BookingPage.css";
-import Seat, { SeatState } from "./Seat";
-import { useParams } from "react-router-dom";
-import {
-	getDoc,
-	doc,
-	DocumentSnapshot,
-	DocumentData,
-	getDocs,
-} from "@firebase/firestore";
-import { auth, firestore } from "../fireabse_setup/firebase";
-import { useNavigate } from "react-router-dom";
-import { useAuth } from "../fireabse_setup/AuthContext";
+import Seat, {SeatState} from "./Seat";
+import {useParams} from "react-router-dom";
+import {auth} from "../fireabse_setup/firebase";
+import {useNavigate} from "react-router-dom";
+import {useAuth} from "../fireabse_setup/AuthContext";
+import {client} from "../axios";
 
 export interface BookingPageProps {
 	eventID: string;
@@ -19,10 +13,11 @@ export interface BookingPageProps {
 
 function BookingPage() {
 	const navigate = useNavigate();
-	const { currentUser } = useAuth();
+	const {currentUser} = useAuth();
+	const [loading, setLoading] = useState(false);
 
 	const [selectedSeat, setselectedSeat] = useState("");
-	const [docSnapShot, setDocSnapshot] = useState(null);
+	const [eventData, seteventData] = useState<Map<string, any>>(new Map());
 
 	const onselectSeat = (value: string | null) => {
 		if (value != null) setselectedSeat(value);
@@ -40,7 +35,7 @@ function BookingPage() {
 							navigate("book/", {
 								state: {
 									seatNumber: selectedSeat,
-									title: snapshot?.get("title"),
+									title: eventData.get("title"),
 									eventID: eventID,
 								},
 							});
@@ -59,9 +54,7 @@ function BookingPage() {
 		else return SeatState.empty;
 	};
 
-	let { eventID } = useParams();
-	const [snapshot, setsnapshot] =
-		useState<DocumentSnapshot<DocumentData, DocumentData>>();
+	let {eventID} = useParams();
 
 	useEffect(() => {
 		if (auth.currentUser === null) {
@@ -69,15 +62,19 @@ function BookingPage() {
 		}
 
 		if (eventID !== undefined) {
-			getDoc(doc(firestore, "events", eventID)).then((snapshot) => {
-				setsnapshot(snapshot);
+			setLoading(true);
+			client.get(`/events/${eventID}`).then((res) => {
+				if (res.status === 200) {
+					seteventData(new Map<string, any>(Object.entries(res.data)));
+					setLoading(false);
+				}
 			});
 		}
 	}, []);
 
-	if (snapshot?.exists()) {
+	if (eventData.size !== 0) {
 		let seatsData = new Map<String, String>(
-			Object.entries(snapshot.get("seats"))
+			Object.entries(eventData.get("seats"))
 		);
 		return (
 			<div>
@@ -6505,8 +6502,10 @@ function BookingPage() {
 				<div className="footer">{footerLabel()}</div>
 			</div>
 		);
+	} else if (loading) {
+		return <div>Loading Event Data...</div>;
 	} else {
-		return <div>ERROR 404 - Event does not exist</div>;
+		return <div>Event Does not exist.</div>;
 	}
 }
 

@@ -10,6 +10,7 @@
 }
 
 #booking-page {
+	width: 100%;
 	min-height: 100vh;
 	position: relative;
 	padding: 0 20px;
@@ -22,10 +23,12 @@
 }
 
 #seating-layout {
+	/* width: 100%; */
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	min-width: max-content;
 }
 
 .seating-header {
@@ -38,7 +41,7 @@
 
 .balcony .seating-section {
 	display: grid;
-	grid-template-columns: repeat(34, 20px);
+	grid-template-columns: repeat(34, 1fr);
 	grid-template-rows: repeat(14, 16px);
 	column-gap: 5px;
 	row-gap: 5px;
@@ -73,10 +76,10 @@
 .backside .seating-section {
 	display: grid;
 	/* 2 extra columns fro walkway */
-	grid-template-columns: repeat(30, 20px);
+	grid-template-columns: repeat(30, 1fr);
 	grid-template-rows: repeat(14, 16px);
-	column-gap: 5px;
-	row-gap: 5px;
+	column-gap: 0.4rem;
+	row-gap: 0.4rem;
 }
 
 .backside .seating-section .walkway {
@@ -95,7 +98,7 @@
 .front .seating-section {
 	display: grid;
 	/* 2 extra columns fro walkway */
-	grid-template-columns: repeat(34, 20px);
+	grid-template-columns: repeat(34, 1fr);
 	grid-template-rows: repeat(12, 16px);
 	column-gap: 5px;
 	row-gap: 5px;
@@ -113,3 +116,10 @@
 	align-items: center;
 	font-weight: bold;
 }
+
+/* @media (max-width: 600px) {
+	#seating-layout {
+		transform: scale(0.8);
+		margin-bottom: 10px;
+	}
+} */
