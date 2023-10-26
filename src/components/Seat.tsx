@@ -8,22 +8,22 @@ export enum SeatState {
 export interface SeatProps {
 	seatNo: number;
 	seatState: SeatState;
-	seatID: String;
+	seatID: string;
 	onSelect: Function;
 }
 
-function Seat({ seatNo, seatState, seatID, onSelect }: SeatProps) {
-
-    const handleSelect = (id: String) => {
-        if (seatState !== SeatState.occupied) {
+function Seat({seatNo, seatState, seatID, onSelect}: SeatProps) {
+	const handleSelect = (id: string) => {
+		if (seatState !== SeatState.occupied) {
 			onSelect(id);
-        }
-    }
-    
+		}
+	};
+
 	return (
 		<div
 			onClick={() => handleSelect(seatID)}
-			className={`seat ${
+			id={seatID}
+			className={`seat seat-design ${
 				seatState === SeatState.occupied
 					? "occupied"
 					: seatState === SeatState.selected

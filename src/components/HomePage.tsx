@@ -1,12 +1,14 @@
-import { LoginOutlined } from "@ant-design/icons";
-import { signInWithGoogle } from "../fireabse_setup/firebase";
-import { useNavigate } from "react-router-dom";
-import { useAuth } from "../fireabse_setup/AuthContext";
+// import {LoginOutlined} from "@ant-design/icons";
+import {signInWithGoogle} from "../fireabse_setup/firebase";
+import {useNavigate} from "react-router-dom";
+import {useAuth} from "../fireabse_setup/AuthContext";
 import "../styles/HomePage.css";
+import {Button, Flex, Layout} from "antd";
+import {Content, Header} from "antd/es/layout/layout";
 
 function HomePage() {
 	const navigate = useNavigate();
-	const { currentUser } = useAuth();
+	const {currentUser} = useAuth();
 
 	const handleButtonClick = () => {
 		if (currentUser) {
@@ -21,50 +23,33 @@ function HomePage() {
 	};
 
 	return (
-		// <div>
-		// 	<div style={{ fontWeight: "bold", fontSize: "32px" }}>HOME PAGE</div>
-		// 	<div>
-		// 		<Button
-		// 			type="primary"
-		// 			icon={currentUser ? <LogoutOutlined /> : <SearchOutlined />}
-		// 			onClick={() => {
-		// 				if (currentUser) {
-		// 					auth.signOut();
-		// 				} else {
-		// 					signInWithGoogle().then(() => {
-		// 						if (currentUser !== null) {
-		// 							navigate("/events");
-		// 						}
-		// 					});
-		// 				}
-		// 			}}>
-		// 			{currentUser ? "LogOut" : "Sign In With Google"}
-		// 		</Button>
-		// 	</div>
-		// </div>
-
-		<div id="home">
+		<Layout className="layout-home">
+			<Header>
+				<p style={{color: "white"}}>Navbar</p>
+			</Header>
 			<div className="overlay">
-				<div className="invertis">Invertis University</div>
-				<div className="subtitle">Auditorium Booking</div>
-
-				<button
-					type="button"
-					className="home-button"
-					onClick={() => {
-						handleButtonClick();
-					}}>
-					<span className="home-button-icon">
-						<LoginOutlined />
-					</span>
-					<span className="home-button-text">
-						<span>
+				<Content className="content-home">
+					<Flex
+						className="content-wrapper"
+						vertical
+						align="center"
+						justify="center">
+						<p className="invertis">Invertis Univertsity</p>
+						<p className="subtitle">Auditorium Booking</p>
+						<Button
+							icon
+							type="primary"
+							className="login-btn-home"
+							onClick={() => {
+								handleButtonClick();
+							}}>
 							{currentUser ? "See Live Events" : "Sign In With Google"}
-						</span>
-					</span>
-				</button>
+						</Button>
+					</Flex>
+				</Content>
 			</div>
-		</div>
+			{/* <Footer>Footer</Footer> */}
+		</Layout>
 	);
 }
 

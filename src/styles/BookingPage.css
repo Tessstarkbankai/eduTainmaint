@@ -1,3 +1,31 @@
+.layout-booking {
+	min-height: 100vh;
+	/* background-color: #202040; */
+}
+
+.header-booking {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.header-sticky {
+	position: sticky;
+	top: 0;
+	z-index: 1;
+}
+
+.booking-navbar-heading {
+	color: white;
+	font-size: 26px;
+	font-weight: 500;
+	padding: 0 20px;
+}
+
+.content-booking {
+	height: 100%;
+}
+
 .footer {
 	height: 60px;
 	width: 100%;
@@ -13,13 +41,9 @@
 	width: 100%;
 	min-height: 100vh;
 	position: relative;
-	padding: 0 20px;
+	/* padding: 0 20px; */
 	margin-bottom: 100px;
 	user-select: none;
-}
-
-.footer-label {
-	margin-right: 20px;
 }
 
 #seating-layout {
@@ -42,9 +66,9 @@
 .balcony .seating-section {
 	display: grid;
 	grid-template-columns: repeat(34, 1fr);
-	grid-template-rows: repeat(14, 16px);
-	column-gap: 5px;
-	row-gap: 5px;
+	grid-template-rows: repeat(14, 20px);
+	column-gap: 0.8rem;
+	row-gap: 0.8rem;
 }
 
 .balcony .seating-section .top-walkway {
@@ -62,6 +86,7 @@
 	justify-content: center;
 	align-items: center;
 	font-weight: bold;
+	/* color: white; */
 }
 
 .balcony .row-end-name {
@@ -77,9 +102,9 @@
 	display: grid;
 	/* 2 extra columns fro walkway */
 	grid-template-columns: repeat(30, 1fr);
-	grid-template-rows: repeat(14, 16px);
-	column-gap: 0.4rem;
-	row-gap: 0.4rem;
+	grid-template-rows: repeat(14, 20px);
+	column-gap: 0.8rem;
+	row-gap: 0.8rem;
 }
 
 .backside .seating-section .walkway {
@@ -99,9 +124,9 @@
 	display: grid;
 	/* 2 extra columns fro walkway */
 	grid-template-columns: repeat(34, 1fr);
-	grid-template-rows: repeat(12, 16px);
-	column-gap: 5px;
-	row-gap: 5px;
+	grid-template-rows: repeat(12, 20px);
+	column-gap: 0.8rem;
+	row-gap: 0.8rem;
 }
 
 .front .seating-section .walkway {
@@ -117,9 +142,8 @@
 	font-weight: bold;
 }
 
-/* @media (max-width: 600px) {
-	#seating-layout {
-		transform: scale(0.8);
-		margin-bottom: 10px;
+@media only screen and (max-width: 640px) {
+	.layout-booking {
+		width: max-content;
 	}
-} */
+}

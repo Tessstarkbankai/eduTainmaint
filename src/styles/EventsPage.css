@@ -1,6 +1,38 @@
-.cards {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	column-gap: 25px;
-	row-gap: 25px;
+.layout-events {
+	min-height: 100vh;
+}
+
+.content-events {
+	height: 100%;
+}
+
+.cards-container {
+	max-width: 100%;
+	padding: 40px 20px;
+}
+
+.events-heading {
+	font-size: 30px;
+	font-weight: bold;
+	text-align: center;
+	padding-top: 20px;
+}
+
+.event-card {
+	margin: 20px;
+}
+
+.events-loading {
+	width: 100%;
+	padding-top: 100px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.loading-text {
+	margin-top: 20px;
+	font-size: 14px;
+	color: #1677ff;
 }

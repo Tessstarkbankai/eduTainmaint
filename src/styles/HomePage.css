@@ -1,20 +1,3 @@
-body,
-html {
-	height: 100%;
-}
-
-#home {
-	height: 100%;
-}
-
-#home {
-	background-image: url("../../public/bg.jpg");
-	height: 100%;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
-}
-
 .overlay {
 	height: 100%;
 	width: 100%;
@@ -26,11 +9,13 @@ html {
 }
 
 .invertis {
-	font-size: 90px;
+	font-size: 5rem;
 	font-weight: bold;
 	color: white;
 	text-transform: uppercase;
 	opacity: 100%;
+	margin: 0;
+	text-align: center;
 }
 
 .subtitle {
@@ -38,41 +23,39 @@ html {
 	font-weight: bold;
 	color: white;
 	text-transform: uppercase;
-	opacity: 60%;
+	opacity: 90%;
+	margin: 0;
 }
 
-.home-button {
-	color: #ffffff;
-	font-size: 19px;
-	border-radius: 28px;
-	border: solid 0px #84bcf3;
-	text-shadow: 1px 1px 0px #528ecc;
-	box-shadow: inset 1px 1px 2px 0px #bbdaf7;
-	text-decoration: none;
-	cursor: pointer;
-	position: relative;
-	overflow: hidden;
-	font-family: Arial;
-	font-weight: bold;
-	background: linear-gradient(180deg, #79bcff 10%, #378ee5 100%);
-	display: inline-flex;
-	align-items: center;
-	margin-top: 20px;
-	padding: 0;
+/* //////////////////////////////////////////////////////// */
+
+.layout-home {
+	height: 100vh;
+	background-image: url("../../public/bg.jpg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
-/* .home-button:hover {
-	background: linear-gradient(180deg, #378ee5 10%, #79bcff 100%);
-} */
-
-.home-button-text {
-	position: relative;
-	padding: 10px 17px;
+.content-home {
+	height: 100%;
 }
 
-.home-button-icon {
-	position: relative;
-	border-right: 1px solid #ffffff29;
-	box-shadow: inset rgb(0 0 0 / 14%) -1px 0 0;
-	padding: 10px 10px;
+.content-wrapper {
+	height: 100%;
+}
+
+.login-btn-home {
+	margin-top: 30px;
+}
+
+@media only screen and (max-width: 640px) {
+	.invertis {
+		font-size: 2rem;
+	}
+
+	.subtitle {
+		font-size: 1.5rem;
+		margin-top: 0.5rem;
+	}
 }

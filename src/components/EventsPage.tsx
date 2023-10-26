@@ -1,4 +1,4 @@
-import {Card} from "antd";
+import {Row, Col, Card, Layout, Spin} from "antd";
 import Meta from "antd/es/card/Meta";
 import "../styles/EventsPage.css";
 import {auth} from "../fireabse_setup/firebase";
@@ -6,6 +6,8 @@ import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {useAuth} from "../fireabse_setup/AuthContext";
 import {client} from "../axios";
+import {LoadingOutlined} from "@ant-design/icons";
+import {Content, Header} from "antd/es/layout/layout";
 
 type Event = {
 	id: string;
@@ -37,36 +39,51 @@ function EventsPage() {
 	var cards: Array<any> = [];
 	eventsArray.forEach((event: Event, i) => {
 		cards.push(
-			<Card
-				key={event.id}
-				onClick={() => {
-					navigate(`/events/${event.id}`);
-				}}
-				hoverable
-				cover={
-					<img
-						width={"200px"}
-						height={"300px"}
-						alt={event.title}
-						src={event.imageURL}
-					/>
-				}>
-				<Meta title={event.title} description={event.description} />
-			</Card>
+			<Col xs={24} sm={24} md={12} lg={8} xl={8} key={event.id}>
+				<Card
+					className="event-card"
+					onClick={() => {
+						navigate(`/events/${event.id}`, {
+							state: {eventImageURL: event.imageURL},
+						});
+					}}
+					hoverable
+					cover={
+						<img
+							width={"200px"}
+							height={"300px"}
+							alt={event.title}
+							src={event.imageURL}
+						/>
+					}>
+					<Meta title={event.title} description={event.description} />
+				</Card>
+			</Col>
 		);
 	});
 
 	return (
-		<div>
-			<div style={{fontWeight: "bold", fontSize: "30px"}}>LIVE EVENTS</div>
-			{loading ? (
-				<div>Loading Events...</div>
-			) : (
-				<div className="cards" style={{margin: "10px 20px"}}>
-					{cards}
+		<Layout className="layout-events">
+			<Header>
+				<p style={{color: "white"}}>Navbar</p>
+			</Header>
+
+			<Content className="content-events">
+				<div>
+					<div className="events-heading">LIVE EVENTS</div>
+					{loading ? (
+						<div className="events-loading">
+							<Spin
+								indicator={<LoadingOutlined style={{fontSize: 80}} spin />}
+							/>
+							<div className="loading-text">Loading Live Events...</div>
+						</div>
+					) : (
+						<Row className="cards-container">{cards}</Row>
+					)}
 				</div>
-			)}
-		</div>
+			</Content>
+		</Layout>
 	);
 }
 

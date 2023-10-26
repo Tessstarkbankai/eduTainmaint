@@ -101,7 +101,9 @@ function SeatBookingPage() {
 				align="center"
 				justify="center"
 				gap="large"
-				style={{minHeight: "100vh"}}>
+				style={{
+					minHeight: "100vh",
+				}}>
 				<div className="page-title">
 					Seat Booking for {location.state.title}
 				</div>

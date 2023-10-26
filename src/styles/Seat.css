@@ -1,11 +1,19 @@
 .seat {
 	text-align: center;
 	font-size: 10px;
-	border-radius: 20px;
+	/* border-radius: 20px;
 	padding: 0 5px;
 	border: 1px solid grey;
-	background-color: white;
+	background-color: white; */
 	cursor: pointer;
+	background-color: #543864;
+	color: white;
+}
+
+.seat-design {
+	width: 20px;
+	height: 20px;
+	border-radius: 20px 20px 0 0;
 }
 
 .seat.occupied {
