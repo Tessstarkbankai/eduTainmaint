@@ -1,18 +1,18 @@
-import { auth } from "../fireabse_setup/firebase";
-import { useLocation, useNavigate } from "react-router-dom";
-import { useAuth } from "../fireabse_setup/AuthContext";
-import { useEffect } from "react";
-import { Button, Flex, QRCode } from "antd";
+import {useLocation, useNavigate} from "react-router-dom";
+import {useAuth} from "../fireabse_setup/AuthContext";
+import {useEffect} from "react";
+import {Button, Flex, QRCode} from "antd";
 import "../styles/GenerateTicketPage.css";
-import { toPng } from "html-to-image";
+import {toPng} from "html-to-image";
+import Ticket from "./Ticket";
 
 function GenerateTicketPage() {
 	const navigate = useNavigate();
 	const location = useLocation();
-	const { currentUser } = useAuth();
+	const {currentUser} = useAuth();
 
 	useEffect(() => {
-		if (auth.currentUser === null) {
+		if (currentUser === null) {
 			navigate("/");
 		}
 		if (!location.state) navigate("/events");
@@ -42,29 +42,29 @@ function GenerateTicketPage() {
 				vertical={true}
 				align="center"
 				justify="center"
-				style={{ height: "100vh" }}>
+				style={{height: "100vh"}}>
 				<Flex
 					vertical={true}
 					align="center"
 					justify="center"
 					id="ticket-wrapper">
-					<p className="ticket-event-name">{location.state.eventTitle}</p>
-					<Flex vertical={false} align="center" justify="center" gap="large">
-						<QRCode
-							size={120}
-							value={`{eventID: ${location.state.eventID}, seatNumber: ${location.state.seatNumber}}`}
-						/>
-						<p className="ticket-seat-number">{location.state.seatNumber}</p>
-					</Flex>
-					<Flex vertical={true} align="center" justify="center">
-						<p className="ticket-data">
-							Student Name: {location.state.studentName}
-						</p>
-						<p className="ticket-data">
-							Student ID: {location.state.studentID}
-						</p>
-					</Flex>
+					<Ticket
+						seat={location.state.seatNumber}
+						ticketTitle="Invertis University"
+						eventName={location.state.eventTitle}
+						studentName={location.state.studentName}
+						studentID={location.state.studentID}
+						course={location.state.studentCourse}
+						eventDate="25 / 11 / 2023"
+						qrCode={
+							<QRCode
+								size={150}
+								value={`{eventID: ${location.state.eventID}, seatNumber: ${location.state.seatNumber}}`}
+							/>
+						}
+					/>
 				</Flex>
+
 				<Button
 					type="primary"
 					onClick={() => {

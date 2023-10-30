@@ -48,7 +48,9 @@ function SeatBookingPage() {
 				userName: values.name,
 				userNumber: values.phone,
 				studentID: values.studentID,
+				studentCourse: values.studentCourse,
 				userID: currentUser?.uid,
+
 			})
 			.then((res) => {
 				let notificationTitle = "";
@@ -63,6 +65,7 @@ function SeatBookingPage() {
 							seatNumber: location.state.seatNumber,
 							studentName: values.name,
 							studentID: values.studentID,
+							studentCourse: values.studentCourse,
 						},
 					});
 				} else if (res.status === 201) {
@@ -92,7 +95,7 @@ function SeatBookingPage() {
 	};
 
 	const onFinishFailed = (errorInfo: any) => {
-		console.log("Failed:", errorInfo);
+		console.error("Booking Failed:", errorInfo);
 	};
 
 	return (
@@ -131,6 +134,15 @@ function SeatBookingPage() {
 						name="studentID"
 						rules={[
 							{required: true, message: "Please enter your student ID!"},
+						]}>
+						<Input />
+					</Form.Item>
+
+					<Form.Item<string>
+						label="Course"
+						name="studentCourse"
+						rules={[
+							{required: true, message: "Please enter your Course!"},
 						]}>
 						<Input />
 					</Form.Item>

@@ -48,7 +48,7 @@ function HomePage() {
 							}}>
 							{currentUser ? "See Live Events" : "Sign In With Google"}
 						</Button>
-						{/* <Ticket seatNo="112" ticketTitle={"Invertis University"} eventName="Abhiruchi Reloading"/> */}
+						
 					</Flex>
 				</Content>
 			</div>

@@ -15,6 +15,7 @@ type Ticket = {
 	eventName: string;
 	seatNo: string;
     studentID: string;
+    studentCourse: string;
     eventID: string;
 };
 
@@ -56,6 +57,7 @@ function MyTicketsPage() {
 									seatNumber: ticket.seatNo,
 									studentName: ticket.name,
 									studentID:ticket.studentID,
+									studentCourse:ticket.studentCourse,
 								},
 							});
 						}}
