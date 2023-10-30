@@ -29,9 +29,13 @@
 
 /* //////////////////////////////////////////////////////// */
 
+.ant-layout-header{
+	padding: 0 !important;
+}
+
 .layout-home {
 	height: 100vh;
-	background-image: url("../../public/bg.jpg");
+	background-image: url("../../public/bg-new.jpeg");
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;

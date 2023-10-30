@@ -8,6 +8,7 @@ import {useAuth} from "../fireabse_setup/AuthContext";
 import {client} from "../axios";
 import {LoadingOutlined} from "@ant-design/icons";
 import {Content, Header} from "antd/es/layout/layout";
+import Navbar from "./Navbar";
 
 type Event = {
 	id: string;
@@ -65,7 +66,7 @@ function EventsPage() {
 	return (
 		<Layout className="layout-events">
 			<Header>
-				<p style={{color: "white"}}>Navbar</p>
+				<Navbar />
 			</Header>
 
 			<Content className="content-events">

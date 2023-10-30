@@ -1,5 +1,5 @@
-import { initializeApp } from "firebase/app";
-import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import {initializeApp} from "firebase/app";
+import {GoogleAuthProvider, getAuth, signInWithPopup} from "firebase/auth";
 import {
 	query,
 	collection,
@@ -23,12 +23,14 @@ const app = initializeApp(firebaseConfig);
 export const firestore = getFirestore(app);
 export const auth = getAuth(app);
 export const googleAuthProvider = new GoogleAuthProvider();
-googleAuthProvider.setCustomParameters({ prompt: "select_account" });
+googleAuthProvider.setCustomParameters({prompt: "select_account"});
 
 export const signInWithGoogle = async () => {
 	try {
 		const res = await signInWithPopup(auth, googleAuthProvider);
 		const user = res.user;
+
+		// TODO: Move the add user to database on first sign in server-side
 		const q = query(
 			collection(firestore, "users"),
 			where("uid", "==", user.uid)
@@ -44,16 +46,5 @@ export const signInWithGoogle = async () => {
 		}
 	} catch (err) {
 		console.error(err);
-		alert(err);
 	}
 };
-
-// const signInWithGoogle = async () => {
-// 	const provider = new GoogleAuthProvider(); // Use 'GoogleAuthProvider' directly
-// 	provider.setCustomParameters({ prompt: "select_account" });
-// 	try {
-// 		await signInWithPopup(auth, provider); // Use 'provider' directly here
-// 	} catch (error) {
-// 		alert(error.message);
-// 	}
-// };

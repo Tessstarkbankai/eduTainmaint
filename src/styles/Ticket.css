@@ -1,0 +1,53 @@
+.ticket-wrapper{
+    display: grid;
+    grid-template-columns: repeat(12, 50px);
+    grid-template-rows: repeat(9, 25px);
+    background-color: white;
+}
+
+.ticket-title{
+    grid-column: 1/13;
+    grid-row: 1/4;
+    background-color: aqua;
+}
+
+.ticket-eventName{
+    grid-column: 1/10;
+    grid-row: 4/6;
+    background-color: aquamarine;
+}
+
+.ticket-studentName{
+    grid-column: 1/6;
+    grid-row: 6/8;
+    background-color: blue;
+}
+
+.ticket-studentID{
+    grid-column: 6/10;
+    grid-row: 6/8;
+    background-color: green;
+}
+
+.ticket-seatNumber{
+    grid-column: 1/4;
+    grid-row: 8/10;
+    background-color: blueviolet;
+}
+
+.ticket-studentCourse{
+    grid-column: 4/7;
+    grid-row: 8/10;
+    background-color: yellow;
+}
+.ticket-eventDate{
+    grid-column: 7/10;
+    grid-row: 8/10;
+    background-color: violet;
+}
+
+.ticket-qrCode{
+    grid-row: 4/10;
+    grid-column: 10/13;
+    background-color: tomato;
+}

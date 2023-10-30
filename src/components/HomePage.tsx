@@ -5,6 +5,8 @@ import {useAuth} from "../fireabse_setup/AuthContext";
 import "../styles/HomePage.css";
 import {Button, Flex, Layout} from "antd";
 import {Content, Header} from "antd/es/layout/layout";
+import Navbar from "./Navbar";
+import Ticket from "./Ticket";
 
 function HomePage() {
 	const navigate = useNavigate();
@@ -25,7 +27,8 @@ function HomePage() {
 	return (
 		<Layout className="layout-home">
 			<Header>
-				<p style={{color: "white"}}>Navbar</p>
+				{/* <p style={{color: "white"}}>Navbar</p> */}
+				<Navbar/>
 			</Header>
 			<div className="overlay">
 				<Content className="content-home">
@@ -45,6 +48,7 @@ function HomePage() {
 							}}>
 							{currentUser ? "See Live Events" : "Sign In With Google"}
 						</Button>
+						{/* <Ticket seatNo="112" ticketTitle={"Invertis University"} eventName="Abhiruchi Reloading"/> */}
 					</Flex>
 				</Content>
 			</div>

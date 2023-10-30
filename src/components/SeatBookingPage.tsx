@@ -9,6 +9,7 @@ import {
 	NotificationPlacements,
 	type NotificationPlacement,
 } from "antd/es/notification/interface";
+import {auth} from "../fireabse_setup/firebase";
 
 function SeatBookingPage() {
 	const navigate = useNavigate();
@@ -47,6 +48,7 @@ function SeatBookingPage() {
 				userName: values.name,
 				userNumber: values.phone,
 				studentID: values.studentID,
+				userID: currentUser?.uid,
 			})
 			.then((res) => {
 				let notificationTitle = "";
@@ -54,7 +56,7 @@ function SeatBookingPage() {
 				if (res.status === 200) {
 					notificationTitle = "Seat Booked Successfully";
 					notificationDescription = "Redirecting you to the ticket page.";
-					navigate("ticket", {
+					navigate("/ticket", {
 						state: {
 							eventID: location.state.eventID,
 							eventTitle: location.state.title,

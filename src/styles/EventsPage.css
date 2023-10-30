@@ -36,3 +36,9 @@
 	font-size: 14px;
 	color: #1677ff;
 }
+
+@media screen and (max-width: 768px) {
+	.cards-container{
+		padding: 20px 10px;
+	}
+}
