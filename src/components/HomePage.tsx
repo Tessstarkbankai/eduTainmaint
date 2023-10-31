@@ -7,6 +7,7 @@ import {Button, Flex, Layout} from "antd";
 import {Content, Header} from "antd/es/layout/layout";
 import Navbar from "./Navbar";
 import Ticket from "./Ticket";
+import Card from "./Card";
 
 function HomePage() {
 	const navigate = useNavigate();
@@ -28,7 +29,7 @@ function HomePage() {
 		<Layout className="layout-home">
 			<Header>
 				{/* <p style={{color: "white"}}>Navbar</p> */}
-				<Navbar/>
+				<Navbar />
 			</Header>
 			<div className="overlay">
 				<Content className="content-home">
@@ -37,7 +38,7 @@ function HomePage() {
 						vertical
 						align="center"
 						justify="center">
-						<p className="invertis">Invertis Univertsity</p>
+						<p className="invertis">Invertis University</p>
 						<p className="subtitle">Auditorium Booking</p>
 						<Button
 							icon

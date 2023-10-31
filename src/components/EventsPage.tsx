@@ -1,4 +1,5 @@
-import {Row, Col, Card, Layout, Spin} from "antd";
+import {Row, Col, Layout, Spin} from "antd";
+import "./Card";
 import Meta from "antd/es/card/Meta";
 import "../styles/EventsPage.css";
 import {auth} from "../fireabse_setup/firebase";
@@ -9,6 +10,7 @@ import {client} from "../axios";
 import {LoadingOutlined} from "@ant-design/icons";
 import {Content, Header} from "antd/es/layout/layout";
 import Navbar from "./Navbar";
+import Card from "./Card";
 
 type Event = {
 	id: string;
@@ -26,7 +28,7 @@ function EventsPage() {
 
 	useEffect(() => {
 		if (currentUser == null) {
-			console.log(auth.currentUser + "Null User");
+			console.log(auth.currentUser + "Null User: ");
 			navigate("/");
 		}
 
@@ -48,17 +50,9 @@ function EventsPage() {
 							state: {eventImageURL: event.imageURL},
 						});
 					}}
-					hoverable
-					cover={
-						<img
-							width={"200px"}
-							height={"300px"}
-							alt={event.title}
-							src={event.imageURL}
-						/>
-					}>
-					<Meta title={event.title} description={event.description} />
-				</Card>
+					text={event.title}
+					imageURL={event.imageURL}
+				/>
 			</Col>
 		);
 	});

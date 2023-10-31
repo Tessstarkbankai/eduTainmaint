@@ -1,5 +1,6 @@
 import {useLocation, useNavigate} from "react-router-dom";
 import {useAuth} from "../fireabse_setup/AuthContext";
+import {Timestamp} from "@firebase/firestore";
 import {useEffect} from "react";
 import {Button, Flex, QRCode} from "antd";
 import "../styles/GenerateTicketPage.css";
@@ -36,6 +37,12 @@ function GenerateTicketPage() {
 		});
 	};
 
+	const timeStamp = new Timestamp(
+		location.state.eventDate._seconds,
+		location.state.eventDate._nanoseconds
+	);
+	const eventDate = timeStamp.toDate();
+
 	return (
 		<>
 			<Flex
@@ -55,7 +62,7 @@ function GenerateTicketPage() {
 						studentName={location.state.studentName}
 						studentID={location.state.studentID}
 						course={location.state.studentCourse}
-						eventDate="25 / 11 / 2023"
+						eventDate={`${eventDate.getDate()} \\ ${eventDate.getMonth()} \\ ${eventDate.getFullYear()}`}
 						qrCode={
 							<QRCode
 								size={150}

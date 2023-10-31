@@ -35,8 +35,8 @@
 
 .layout-home {
 	height: 100vh;
-	background-image: url("../../public/bg-new.jpeg");
-	background-position: center;
+	background-image: url("../../public/home-bg.JPG");
+	background-position: bottom;
 	background-repeat: no-repeat;
 	background-size: cover;
 }

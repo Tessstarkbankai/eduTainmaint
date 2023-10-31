@@ -50,7 +50,7 @@ function SeatBookingPage() {
 				studentID: values.studentID,
 				studentCourse: values.studentCourse,
 				userID: currentUser?.uid,
-
+				eventDate: location.state.eventDate,
 			})
 			.then((res) => {
 				let notificationTitle = "";
@@ -66,6 +66,7 @@ function SeatBookingPage() {
 							studentName: values.name,
 							studentID: values.studentID,
 							studentCourse: values.studentCourse,
+							eventDate: location.state.eventDate,
 						},
 					});
 				} else if (res.status === 201) {
@@ -105,16 +106,14 @@ function SeatBookingPage() {
 				vertical
 				align="center"
 				justify="center"
+				className="seat-booking-wrapper"
 				gap="large"
 				style={{
 					minHeight: "100vh",
 				}}>
-				<div className="page-title">
-					Seat Booking for {location.state.title}
-				</div>
-
 				<Form
 					name="seat-booking-form"
+					className="seat-booking-form"
 					labelCol={{span: 8}}
 					wrapperCol={{span: 16}}
 					style={{maxWidth: "800px"}}
@@ -122,6 +121,10 @@ function SeatBookingPage() {
 					onFinish={onFinish}
 					onFinishFailed={onFinishFailed}
 					autoComplete="off">
+					<div className="page-title">
+						Seat Booking for {location.state.title}
+					</div>
+					
 					<Form.Item<string>
 						label="Name"
 						name="name"
@@ -141,14 +144,12 @@ function SeatBookingPage() {
 					<Form.Item<string>
 						label="Course"
 						name="studentCourse"
-						rules={[
-							{required: true, message: "Please enter your Course!"},
-						]}>
+						rules={[{required: true, message: "Please enter your Course!"}]}>
 						<Input />
 					</Form.Item>
 
 					<Form.Item<number>
-						label="Phone Number"
+						label="Contact"
 						name="phone"
 						rules={[
 							{required: true, message: "Please enter your phone number!"},

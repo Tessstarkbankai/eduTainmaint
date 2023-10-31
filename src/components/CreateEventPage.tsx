@@ -1,7 +1,7 @@
 import {Button, DatePicker, Form, Input, Space} from "antd";
 import {collection, addDoc, Timestamp} from "@firebase/firestore";
 import {firestore} from "../fireabse_setup/firebase";
-import {RangePickerProps} from "antd/es/date-picker";
+import {DatePickerProps, RangePickerProps} from "antd/es/date-picker";
 import {useState} from "react";
 import {allEmptySeats} from "./SeatsMap";
 import {useNavigate} from "react-router-dom";
@@ -16,21 +16,29 @@ function CreateEventPage() {
 
 	const [startDate, setStartDate] = useState<Date>(defaultStartDate);
 	const [endDate, setEndDate] = useState<Date>(defaultEndDate);
+	const [eventDate, setEventDate] = useState<Date>(defaultStartDate);
 
 	const createEvent = (
 		title: String,
 		description: string,
 		imageURL: string
 	) => {
-		addDoc(eventsRef, {
+
+		try {
+			addDoc(eventsRef, {
 			title: title,
 			description: description,
 			imageURL: imageURL,
 			bookingStartTime: Timestamp.fromDate(startDate),
 			bookingEndTime: Timestamp.fromDate(endDate),
+			eventDate: Timestamp.fromDate(eventDate),
 			seatsAvailable: 1040,
 			seats: allEmptySeats,
 		});
+		} catch (e) {
+			console.error(e);
+		}
+		
 	};
 
 	const onFinish = (values: any) => {
@@ -54,6 +62,12 @@ function CreateEventPage() {
 		if (value !== undefined && value?.[0] !== null && value?.[1] != null) {
 			setStartDate(value[0].toDate());
 			setEndDate(value[1].toDate());
+		}
+	};
+
+	const onChangeEventDate: DatePickerProps["onChange"] = (date, dateString) => {
+		if (date !== null) {
+			setEventDate(date?.toDate());
 		}
 	};
 
@@ -89,6 +103,13 @@ function CreateEventPage() {
 			</Form.Item>
 
 			<Form.Item<string>
+				label="Event Date"
+				name="eventDate"
+				rules={[{required: true, message: "Please select Event Date!"}]}>
+				<DatePicker onChange={onChangeEventDate} />
+			</Form.Item>
+
+			<Form.Item<string>
 				label="Booking Start and End Date"
 				name="dateRangePicker"
 				rules={[
@@ -100,7 +121,6 @@ function CreateEventPage() {
 					<RangePicker
 						showTime={{format: "HH:mm"}}
 						format="YYYY-MM-DD HH:mm"
-						// onChange={onChange}
 						onOk={onOk}
 					/>
 				</Space>

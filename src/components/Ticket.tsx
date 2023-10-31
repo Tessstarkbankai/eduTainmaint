@@ -1,4 +1,3 @@
-import { QRProps } from "antd/es/qr-code/interface";
 import "../styles/Ticket.css";
 import { ReactNode } from "react";
 

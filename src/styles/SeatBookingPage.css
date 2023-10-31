@@ -2,4 +2,21 @@
 	font-weight: bold;
 	font-size: 26px;
 	text-align: center;
+	margin-bottom: 20px;
+}
+
+.seat-booking-wrapper{
+	background-image: url("../../public/seat-booking-bg.jpg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.seat-booking-form{
+	backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(222, 222, 222, 0.75);
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+	padding: 40px;
 }

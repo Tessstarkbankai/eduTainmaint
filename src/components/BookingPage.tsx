@@ -48,6 +48,7 @@ function BookingPage() {
 									seatNumber: selectedSeat,
 									title: eventData.get("title"),
 									eventID: eventID,
+									eventDate: eventData.get("eventDate"),
 									eventImageURL: location.state.eventImageURL,
 								},
 							});
