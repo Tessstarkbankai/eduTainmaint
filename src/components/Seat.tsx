@@ -30,7 +30,7 @@ function Seat({seatNo, seatState, seatID, onSelect}: SeatProps) {
 					? "selected"
 					: " "
 			}`}>
-			{seatNo}
+			<p className="seat-no">{seatNo}</p>
 		</div>
 	);
 }

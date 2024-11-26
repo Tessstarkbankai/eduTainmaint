@@ -9,7 +9,8 @@ import {
 	NotificationPlacements,
 	type NotificationPlacement,
 } from "antd/es/notification/interface";
-import {auth} from "../fireabse_setup/firebase";
+
+
 
 function SeatBookingPage() {
 	const navigate = useNavigate();
@@ -58,17 +59,28 @@ function SeatBookingPage() {
 				if (res.status === 200) {
 					notificationTitle = "Seat Booked Successfully";
 					notificationDescription = "Redirecting you to the ticket page.";
-					navigate("/ticket", {
-						state: {
-							eventID: location.state.eventID,
-							eventTitle: location.state.title,
-							seatNumber: location.state.seatNumber,
-							studentName: values.name,
-							studentID: values.studentID,
-							studentCourse: values.studentCourse,
-							eventDate: location.state.eventDate,
-						},
-					});
+
+					console.log(res.data.bookingData);
+
+					// If booking data === null was sent by the server.
+					// Means the ticket is not booked yet.
+					// We will show a notification that ""Error: Something Went Wrong!""
+					if (res.data.bookingData == null) {
+						notificationTitle = "Booking Failed";
+						notificationDescription = "Error: Something Went Wrong!";
+					} else {
+						navigate("/ticket", {
+							state: {
+								eventID: res.data.bookingData.eventID,
+								eventTitle: res.data.bookingData.eventName,
+								seatNumber: res.data.bookingData.seatNo,
+								studentName: res.data.bookingData.studentName,
+								studentID: res.data.bookingData.studentID,
+								studentCourse: res.data.bookingData.studentCourse,
+								eventDate: res.data.bookingData.eventDate,
+							},
+						});
+					}
 				} else if (res.status === 201) {
 					notificationTitle = "Booking Failed";
 					notificationDescription = "Seat is already booked.";
@@ -90,6 +102,7 @@ function SeatBookingPage() {
 			})
 			.catch((err) => {
 				console.error(err);
+				setLoading(false);
 			});
 
 		// TODO: Handle and notify user about the server response
@@ -124,7 +137,7 @@ function SeatBookingPage() {
 					<div className="page-title">
 						Seat Booking for {location.state.title}
 					</div>
-					
+
 					<Form.Item<string>
 						label="Name"
 						name="name"
@@ -174,11 +187,11 @@ function SeatBookingPage() {
 						<Input disabled defaultValue={location.state.seatNumber} />
 					</Form.Item>
 
-					<Form.Item wrapperCol={{offset: 8, span: 16}}>
+					<Flex vertical align="center" justify="center">
 						<Button type="primary" htmlType="submit" loading={loading}>
 							Book Ticket
 						</Button>
-					</Form.Item>
+					</Flex>
 				</Form>
 			</Flex>
 		</>

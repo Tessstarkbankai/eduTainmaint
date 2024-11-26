@@ -1,19 +1,19 @@
 .seat {
-	text-align: center;
-	font-size: 10px;
-	/* border-radius: 20px;
-	padding: 0 5px;
-	border: 1px solid grey;
-	background-color: white; */
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	cursor: pointer;
-	background-color: #543864;
-	color: white;
+	border: 1px solid gray;
+}
+
+.seat .seat-no {
+	font-size: 10px;
 }
 
 .seat-design {
-	width: 20px;
-	height: 20px;
-	border-radius: 20px 20px 0 0;
+	width: 25px;
+	height: 25px;
+	border-radius: 5px;
 }
 
 .seat.occupied {
@@ -22,5 +22,7 @@
 }
 
 .seat.selected {
-	background-color: red;
+	color: white;
+	border: none;
+	background-color: #543864;
 }

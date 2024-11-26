@@ -66,7 +66,7 @@ function GenerateTicketPage() {
 						qrCode={
 							<QRCode
 								size={150}
-								value={`{eventID: ${location.state.eventID}, seatNumber: ${location.state.seatNumber}}`}
+								value={`${location.state.eventID}%::%${location.state.seatNumber}`}
 							/>
 						}
 					/>

@@ -33,12 +33,12 @@ function BookingPage() {
 
 	let headerContent = () => {
 		if (selectedSeat == null || selectedSeat === "")
-			return <p className="booking-navbar-heading">Select a seat</p>;
+			return <p className="booking-navbar-heading">Select a seat to book</p>;
 		else
 			return (
 				<div className="header-booking">
 					<span className="booking-navbar-heading">
-						Selected Seat is: {selectedSeat}
+						Selected Seat: {selectedSeat}
 					</span>
 					<Button
 						type="primary"
@@ -53,7 +53,7 @@ function BookingPage() {
 								},
 							});
 						}}>
-						Continue
+						Continue to booking
 					</Button>
 				</div>
 			);
@@ -322,7 +322,7 @@ function BookingPage() {
 										seatNo={16}
 										seatID="MM16"
 										onSelect={onselectSeat}
-										seatState={getSeatState(seatsData, "Mm16")}
+										seatState={getSeatState(seatsData, "MM16")}
 									/>
 									<Seat
 										seatNo={17}
@@ -4774,13 +4774,13 @@ function BookingPage() {
 									/>
 									<Seat
 										seatNo={26}
-										seatID="L26"
+										seatID="K26"
 										onSelect={onselectSeat}
 										seatState={getSeatState(seatsData, "K26")}
 									/>
 									<Seat
 										seatNo={27}
-										seatID="L27"
+										seatID="K27"
 										onSelect={onselectSeat}
 										seatState={getSeatState(seatsData, "K27")}
 									/>
@@ -4946,13 +4946,13 @@ function BookingPage() {
 									/>
 									<Seat
 										seatNo={26}
-										seatID="L26"
+										seatID="J26"
 										onSelect={onselectSeat}
 										seatState={getSeatState(seatsData, "J26")}
 									/>
 									<Seat
 										seatNo={27}
-										seatID="L27"
+										seatID="J27"
 										onSelect={onselectSeat}
 										seatState={getSeatState(seatsData, "J27")}
 									/>
@@ -5118,13 +5118,13 @@ function BookingPage() {
 									/>
 									<Seat
 										seatNo={26}
-										seatID="L26"
+										seatID="I26"
 										onSelect={onselectSeat}
 										seatState={getSeatState(seatsData, "I26")}
 									/>
 									<Seat
 										seatNo={27}
-										seatID="L27"
+										seatID="I27"
 										onSelect={onselectSeat}
 										seatState={getSeatState(seatsData, "I27")}
 									/>
@@ -5290,13 +5290,13 @@ function BookingPage() {
 									/>
 									<Seat
 										seatNo={26}
-										seatID="L26"
+										seatID="H26"
 										onSelect={onselectSeat}
 										seatState={getSeatState(seatsData, "H26")}
 									/>
 									<Seat
 										seatNo={27}
-										seatID="L27"
+										seatID="H27"
 										onSelect={onselectSeat}
 										seatState={getSeatState(seatsData, "H27")}
 									/>
@@ -5462,13 +5462,13 @@ function BookingPage() {
 									/>
 									<Seat
 										seatNo={26}
-										seatID="L26"
+										seatID="G26"
 										onSelect={onselectSeat}
 										seatState={getSeatState(seatsData, "G26")}
 									/>
 									<Seat
 										seatNo={27}
-										seatID="L27"
+										seatID="G27"
 										onSelect={onselectSeat}
 										seatState={getSeatState(seatsData, "G27")}
 									/>
@@ -5634,13 +5634,13 @@ function BookingPage() {
 									/>
 									<Seat
 										seatNo={26}
-										seatID="L26"
+										seatID="F26"
 										onSelect={onselectSeat}
 										seatState={getSeatState(seatsData, "F26")}
 									/>
 									<Seat
 										seatNo={27}
-										seatID="L27"
+										seatID="F27"
 										onSelect={onselectSeat}
 										seatState={getSeatState(seatsData, "F27")}
 									/>
@@ -5806,13 +5806,13 @@ function BookingPage() {
 									/>
 									<Seat
 										seatNo={26}
-										seatID="L26"
+										seatID="E26"
 										onSelect={onselectSeat}
 										seatState={getSeatState(seatsData, "E26")}
 									/>
 									<Seat
 										seatNo={27}
-										seatID="L27"
+										seatID="E27"
 										onSelect={onselectSeat}
 										seatState={getSeatState(seatsData, "E27")}
 									/>
@@ -5978,13 +5978,13 @@ function BookingPage() {
 									/>
 									<Seat
 										seatNo={26}
-										seatID="L26"
+										seatID="D26"
 										onSelect={onselectSeat}
 										seatState={getSeatState(seatsData, "D26")}
 									/>
 									<Seat
 										seatNo={27}
-										seatID="L27"
+										seatID="D27"
 										onSelect={onselectSeat}
 										seatState={getSeatState(seatsData, "D27")}
 									/>
@@ -6150,13 +6150,13 @@ function BookingPage() {
 									/>
 									<Seat
 										seatNo={26}
-										seatID="L26"
+										seatID="C26"
 										onSelect={onselectSeat}
 										seatState={getSeatState(seatsData, "C26")}
 									/>
 									<Seat
 										seatNo={27}
-										seatID="L27"
+										seatID="C27"
 										onSelect={onselectSeat}
 										seatState={getSeatState(seatsData, "C27")}
 									/>
@@ -6322,13 +6322,13 @@ function BookingPage() {
 									/>
 									<Seat
 										seatNo={26}
-										seatID="L26"
+										seatID="B26"
 										onSelect={onselectSeat}
 										seatState={getSeatState(seatsData, "B26")}
 									/>
 									<Seat
 										seatNo={27}
-										seatID="L27"
+										seatID="B27"
 										onSelect={onselectSeat}
 										seatState={getSeatState(seatsData, "B27")}
 									/>
@@ -6494,13 +6494,13 @@ function BookingPage() {
 									/>
 									<Seat
 										seatNo={26}
-										seatID="L26"
+										seatID="A26"
 										onSelect={onselectSeat}
 										seatState={getSeatState(seatsData, "A26")}
 									/>
 									<Seat
 										seatNo={27}
-										seatID="L27"
+										seatID="A27"
 										onSelect={onselectSeat}
 										seatState={getSeatState(seatsData, "A27")}
 									/>
@@ -6512,9 +6512,9 @@ function BookingPage() {
 									/>
 									<div className="row-end-name">A</div>
 								</div>
-							</div>
 
-							<div className="seating-header">SCREEN THIS WAY</div>
+								<div className="seating-header">STAGE</div>
+							</div>
 						</div>
 					</div>
 				</Content>

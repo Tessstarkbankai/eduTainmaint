@@ -1,5 +1,4 @@
-import {Row, Col, Layout, Spin} from "antd";
-import "./Card";
+import {Row, Col, Layout, Spin, Card} from "antd";
 import Meta from "antd/es/card/Meta";
 import "../styles/EventsPage.css";
 import {auth} from "../fireabse_setup/firebase";
@@ -10,13 +9,14 @@ import {client} from "../axios";
 import {LoadingOutlined} from "@ant-design/icons";
 import {Content, Header} from "antd/es/layout/layout";
 import Navbar from "./Navbar";
-import Card from "./Card";
+// import Card from "./Card";
 
 type Event = {
 	id: string;
 	description: string;
 	imageURL: string;
 	title: string;
+	hidden: boolean;
 };
 
 function EventsPage() {
@@ -41,9 +41,10 @@ function EventsPage() {
 
 	var cards: Array<any> = [];
 	eventsArray.forEach((event: Event, i) => {
-		cards.push(
-			<Col xs={24} sm={24} md={12} lg={8} xl={8} key={event.id}>
-				<Card
+		if (!event.hidden) {
+			cards.push(
+				<Col xs={24} sm={24} md={12} lg={8} xl={8} key={event.id}>
+					{/* <Card
 					className="event-card"
 					onClick={() => {
 						navigate(`/events/${event.id}`, {
@@ -52,9 +53,28 @@ function EventsPage() {
 					}}
 					text={event.title}
 					imageURL={event.imageURL}
-				/>
-			</Col>
-		);
+				/> */}
+
+					<Card
+						className="event-card"
+						hoverable
+						onClick={() => {
+							navigate(`/events/${event.id}`, {
+								state: {eventImageURL: event.imageURL},
+							});
+						}}
+						cover={
+							<img
+								alt={event.title}
+								src={event.imageURL}
+								className="event-card-image"
+							/>
+						}>
+						<Meta title={event.title} description={event.description} />
+					</Card>
+				</Col>
+			);
+		}
 	});
 
 	return (

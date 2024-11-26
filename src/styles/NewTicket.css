@@ -1,0 +1,244 @@
+@import url("https://fonts.googleapis.com/css2?family=Jura:wght@700&family=Montserrat:wght@700&family=Questrial&display=swap");
+* {
+	box-sizing: border-box !important;
+}
+
+:root {
+	--ticket-bgColor: #f3f1c9;
+}
+
+.new-ticket-wrapper {
+	height: 250px;
+	width: 850px;
+	background-color: white;
+	font-family: "Questrial", sans-serif;
+	background: #ff0101;
+	background: linear-gradient(180deg, #d40017, #010101);
+	display: flex;
+	flex-direction: row;
+	position: relative;
+	overflow: hidden;
+}
+
+.new-ticket-wrapper .ticket-left {
+	/* background-color: aqua; */
+	width: 600px;
+	border-right: 3px dashed white;
+
+	display: flex;
+	align-items: start;
+	justify-content: center;
+
+	position: relative;
+}
+
+.new-ticket-wrapper .ticket-right {
+	/* background-color: blueviolet; */
+	width: 250px;
+	display: flex;
+	align-items: center;
+	justify-content: start;
+	/* font-family: "Jura"; */
+}
+
+/* RIGHT SIDE OF THE TICKET */
+
+.new-ticket-wrapper .ticket-right .qrCode {
+	margin-left: 15px;
+}
+
+.new-ticket-wrapper .ticket-right .right-data {
+	transform: rotate(90deg);
+	text-align: center;
+	margin-left: -15px;
+}
+
+.right-data .seatNo {
+	/* Transparent color just to generate empty ticket */
+	/* Change it to white later */
+	color: transparent;
+	font-size: 50px;
+	font-weight: bold;
+
+
+}
+
+.right-data .ticket-number {
+	text-transform: uppercase;
+	color: white;
+	white-space: nowrap;
+	margin-left: -5px;
+	font-weight: bold;
+}
+
+/* LEFT SIDE OF THE TICKET */
+/* .ticket-left .left-data{
+	width: 355px;
+	height: 250px;
+	
+}
+.ticket-left .border-text{
+	width: 145px;
+	display: flex;
+	justify-content: flex-start;
+	align-items: end;
+}
+
+.border-text p{
+	transform: rotate(90deg);
+	white-space: nowrap;
+	margin: 0;
+	margin-left: 20px;
+
+	color: white;
+	font-size: 30px;
+	font-weight: bold;
+	font-style: italic;
+} */
+
+.border-text {
+	position: absolute;
+	right: -42px;
+	top: 50%;
+	transform: rotate(90deg) translate(-10%, -50%);
+
+	color: white;
+	font-size: 30px;
+	font-weight: bold;
+}
+
+.border-text .ted {
+	color: red;
+}
+
+.border-text .talks {
+	color: red;
+}
+
+.corner-text {
+	position: absolute;
+	bottom: 30px;
+	left: 30px;
+
+	display: flex;
+	flex-direction: column;
+	font-style: italic;
+
+	font-family: "Montserrat";
+}
+
+.corner-text p {
+	margin: 0;
+}
+
+.corner-text .tedx {
+	font-size: 34px;
+	font-weight: bold;
+	color: red;
+	margin-bottom: -7px;
+}
+
+.corner-text .tedx .x {
+	color: white;
+}
+
+.corner-text .iu {
+	font-size: 26px;
+	font-weight: bold;
+	color: red;
+}
+
+.corner-text .season {
+	font-size: 20px;
+	font-weight: bold;
+	color: red;
+
+	text-align: end;
+	margin-right: 10px;
+	margin-top: -3px;
+}
+
+.ticket-left .left-data {
+	display: flex;
+	flex-direction: column;
+	position: absolute;
+	bottom: 15px;
+	right: 15%;
+	text-align: center;
+}
+
+.left-data .student-data {
+	color: white;
+	font-size: 10px;
+	font-weight: bold;
+	margin-bottom: 8px;
+	letter-spacing: 1px;
+}
+
+.left-data .student-data .name {
+	margin-bottom: 3px;
+}
+
+.left-data .date {
+	color: white;
+	font-size: 16px;
+	font-weight: bold;
+	margin-bottom: 8px;
+	letter-spacing: 3px;
+}
+
+.left-data .abhiruchi {
+	padding: 3px;
+	color: white;
+	font-size: 25px;
+	font-weight: bold;
+	text-transform: uppercase;
+	background-color: #ff0101;
+}
+
+.white-corner {
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	border-radius: 30px;
+	background-color: white;
+}
+
+.white-corner.top-left {
+	top: 0;
+	left: 0;
+	margin-left: -20px;
+	margin-top: -20px;
+}
+
+.white-corner.top-right {
+	top: 0;
+	right: 0;
+	margin-right: -20px;
+	margin-top: -20px;
+}
+
+.white-corner.bottom-left {
+	bottom: 0;
+	left: 0;
+	margin-left: -20px;
+	margin-bottom: -20px;
+}
+
+.white-corner.bottom-right {
+	bottom: 0;
+	right: 0;
+	margin-right: -20px;
+	margin-bottom: -20px;
+}
+
+.ant-qrcode {
+	border: none;
+	padding: 0;
+	border-radius: 0px;
+}
+
+.ant-qrcode canvas {
+	height: 125px !important;
+	width: 125px !important;
+}

@@ -1,0 +1,11 @@
+#all-tickets-wrapper{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+}
+
+.generateall-ticket-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+}

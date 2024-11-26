@@ -19,7 +19,11 @@
 }
 
 .event-card {
-	margin: 20px;
+	margin: 20px 5px;
+}
+
+.event-card-image{
+	aspect-ratio: 3/2;
 }
 
 .events-loading {
@@ -41,4 +45,6 @@
 	.cards-container{
 		padding: 20px 10px;
 	}
+
+	
 }

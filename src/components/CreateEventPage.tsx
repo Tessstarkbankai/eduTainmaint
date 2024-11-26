@@ -1,9 +1,9 @@
 import {Button, DatePicker, Form, Input, Space} from "antd";
-import {collection, addDoc, Timestamp} from "@firebase/firestore";
+import {collection, addDoc, Timestamp, setDoc, doc} from "@firebase/firestore";
 import {firestore} from "../fireabse_setup/firebase";
 import {DatePickerProps, RangePickerProps} from "antd/es/date-picker";
 import {useState} from "react";
-import {allEmptySeats} from "./SeatsMap";
+import {allEmptySeats, tedXSeats} from "./SeatsMap";
 import {useNavigate} from "react-router-dom";
 const {RangePicker} = DatePicker;
 
@@ -23,22 +23,23 @@ function CreateEventPage() {
 		description: string,
 		imageURL: string
 	) => {
-
 		try {
-			addDoc(eventsRef, {
-			title: title,
-			description: description,
-			imageURL: imageURL,
-			bookingStartTime: Timestamp.fromDate(startDate),
-			bookingEndTime: Timestamp.fromDate(endDate),
-			eventDate: Timestamp.fromDate(eventDate),
-			seatsAvailable: 1040,
-			seats: allEmptySeats,
-		});
+			
+			const eventsCollectionRef = collection(firestore, "events");
+			addDoc(eventsCollectionRef, {
+				title: title,
+				hidden: false,
+				description: description,
+				imageURL: imageURL,
+				bookingStartTime: Timestamp.fromDate(startDate),
+				bookingEndTime: Timestamp.fromDate(endDate),
+				eventDate: Timestamp.fromDate(eventDate),
+				seatsAvailable: 1040,
+				seats: tedXSeats,
+			});
 		} catch (e) {
 			console.error(e);
 		}
-		
 	};
 
 	const onFinish = (values: any) => {
