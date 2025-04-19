@@ -38,8 +38,9 @@ function HomePage() {
 						vertical
 						align="center"
 						justify="center">
-						<p className="invertis">Invertis University</p>
-						<p className="subtitle">Auditorium Booking</p>
+						<p className="invertis">Invertis Auditorium</p>
+						<p className="subtitle">Booking System</p>
+						{/* <p className="subtitle-small">Grab your seats now</p> */}
 						<Button
 							icon
 							type="primary"

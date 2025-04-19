@@ -8,7 +8,7 @@ export default function Navbar() {
 	return (
 		<nav className="navigation">
 			<a href="/" className="brand-name">
-				Invertis University
+				IABS
 			</a>
 			<button
 				className="hamburger"

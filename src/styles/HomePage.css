@@ -27,6 +27,14 @@
 	margin: 0;
 }
 
+.subtitle-small{
+	font-size: 20px;
+	color: white;
+	text-transform: uppercase;
+	opacity: 90%;
+	margin: 0;
+}
+
 /* //////////////////////////////////////////////////////// */
 
 .ant-layout-header{

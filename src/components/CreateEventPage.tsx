@@ -3,7 +3,7 @@ import {collection, addDoc, Timestamp, setDoc, doc} from "@firebase/firestore";
 import {firestore} from "../fireabse_setup/firebase";
 import {DatePickerProps, RangePickerProps} from "antd/es/date-picker";
 import {useState} from "react";
-import {allEmptySeats, tedXSeats} from "./SeatsMap";
+import {front2RowBookSeats} from "./SeatsMap";
 import {useNavigate} from "react-router-dom";
 const {RangePicker} = DatePicker;
 
@@ -35,7 +35,7 @@ function CreateEventPage() {
 				bookingEndTime: Timestamp.fromDate(endDate),
 				eventDate: Timestamp.fromDate(eventDate),
 				seatsAvailable: 1040,
-				seats: tedXSeats,
+				seats: front2RowBookSeats,
 			});
 		} catch (e) {
 			console.error(e);
