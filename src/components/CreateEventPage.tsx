@@ -1,11 +1,11 @@
-import {Button, DatePicker, Form, Input, Space} from "antd";
-import {collection, addDoc, Timestamp, setDoc, doc} from "@firebase/firestore";
-import {firestore} from "../fireabse_setup/firebase";
-import {DatePickerProps, RangePickerProps} from "antd/es/date-picker";
-import {useState} from "react";
-import {front2RowBookSeats} from "./SeatsMap";
-import {useNavigate} from "react-router-dom";
-const {RangePicker} = DatePicker;
+import { Button, DatePicker, Form, Input, Space } from "antd";
+import { collection, addDoc, Timestamp, setDoc, doc } from "@firebase/firestore";
+import { firestore } from "../fireabse_setup/firebase";
+import { DatePickerProps, RangePickerProps } from "antd/es/date-picker";
+import { useState } from "react";
+import { front2RowBookSeats, front3RowAndBalconyBookSeats } from "./SeatsMap";
+import { useNavigate } from "react-router-dom";
+const { RangePicker } = DatePicker;
 
 const eventsRef = collection(firestore, "events");
 
@@ -24,7 +24,7 @@ function CreateEventPage() {
 		imageURL: string
 	) => {
 		try {
-			
+
 			const eventsCollectionRef = collection(firestore, "events");
 			addDoc(eventsCollectionRef, {
 				title: title,
@@ -35,7 +35,7 @@ function CreateEventPage() {
 				bookingEndTime: Timestamp.fromDate(endDate),
 				eventDate: Timestamp.fromDate(eventDate),
 				seatsAvailable: 1040,
-				seats: front2RowBookSeats,
+				seats: front3RowAndBalconyBookSeats,
 			});
 		} catch (e) {
 			console.error(e);
@@ -75,38 +75,38 @@ function CreateEventPage() {
 	return (
 		<Form
 			name="create-event-form"
-			labelCol={{span: 8}}
-			wrapperCol={{span: 16}}
-			style={{maxWidth: 600}}
-			initialValues={{remember: true}}
+			labelCol={{ span: 8 }}
+			wrapperCol={{ span: 16 }}
+			style={{ maxWidth: 600 }}
+			initialValues={{ remember: true }}
 			onFinish={onFinish}
 			onFinishFailed={onFinishFailed}
 			autoComplete="off">
 			<Form.Item<string>
 				label="Event Title"
 				name="title"
-				rules={[{required: true, message: "Please input Event Title!"}]}>
+				rules={[{ required: true, message: "Please input Event Title!" }]}>
 				<Input />
 			</Form.Item>
 
 			<Form.Item<string>
 				label="Event Description"
 				name="description"
-				rules={[{required: true, message: "Please input Event Description!"}]}>
+				rules={[{ required: true, message: "Please input Event Description!" }]}>
 				<Input.TextArea />
 			</Form.Item>
 
 			<Form.Item<string>
 				label="Event Image URL"
 				name="imageURL"
-				rules={[{required: true, message: "Please input Event Image URL!"}]}>
+				rules={[{ required: true, message: "Please input Event Image URL!" }]}>
 				<Input />
 			</Form.Item>
 
 			<Form.Item<string>
 				label="Event Date"
 				name="eventDate"
-				rules={[{required: true, message: "Please select Event Date!"}]}>
+				rules={[{ required: true, message: "Please select Event Date!" }]}>
 				<DatePicker onChange={onChangeEventDate} />
 			</Form.Item>
 
@@ -120,14 +120,14 @@ function CreateEventPage() {
 				]}>
 				<Space direction="vertical" size={12}>
 					<RangePicker
-						showTime={{format: "HH:mm"}}
+						showTime={{ format: "HH:mm" }}
 						format="YYYY-MM-DD HH:mm"
 						onOk={onOk}
 					/>
 				</Space>
 			</Form.Item>
 
-			<Form.Item wrapperCol={{offset: 8, span: 16}}>
+			<Form.Item wrapperCol={{ offset: 8, span: 16 }}>
 				<Button type="primary" htmlType="submit">
 					Create Event
 				</Button>

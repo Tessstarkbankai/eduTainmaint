@@ -62,7 +62,7 @@ function GenerateTicketPage() {
 						studentName={location.state.studentName}
 						studentID={location.state.studentID}
 						course={location.state.studentCourse}
-						eventDate={`${eventDate.getDate()} \\ ${eventDate.getMonth()} \\ ${eventDate.getFullYear()}`}
+						eventDate={`${eventDate.getDate()} \\ ${eventDate.getMonth() + 1} \\ ${eventDate.getFullYear()}`}
 						qrCode={
 							<QRCode
 								size={150}
